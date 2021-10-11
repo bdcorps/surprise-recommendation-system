@@ -298,7 +298,7 @@
 
         $.ajax({
           method: "POST",
-          url: "http://10.0.0.249:105/query/",
+          url: "https://movie-recommender-01.herokuapp.com/query/",
           data: { users, items, ratings, items_to_predict },
           success: function (data) {
             $("#" + keyMaps[data[0][1]]).val(Math.round(data[0][3]).toString());
