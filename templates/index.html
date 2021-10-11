@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <meta
+      name="author"
+      content="Mark Otto, Jacob Thornton, and Bootstrap contributors"
+    />
+    <meta name="generator" content="Hugo 0.84.0" />
+    <title>Jumbotron example · Bootstrap v5.0</title>
+
+    <link
+      rel="canonical"
+      href="https://getbootstrap.com/docs/5.0/examples/jumbotron/"
+    />
+
+    <!-- Bootstrap core CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Favicons -->
+    <link
+      rel="apple-touch-icon"
+      href="/docs/5.0/assets/img/favicons/apple-touch-icon.png"
+      sizes="180x180"
+    />
+    <link
+      rel="icon"
+      href="/docs/5.0/assets/img/favicons/favicon-32x32.png"
+      sizes="32x32"
+      type="image/png"
+    />
+    <link
+      rel="icon"
+      href="/docs/5.0/assets/img/favicons/favicon-16x16.png"
+      sizes="16x16"
+      type="image/png"
+    />
+    <link rel="manifest" href="/docs/5.0/assets/img/favicons/manifest.json" />
+    <link
+      rel="mask-icon"
+      href="/docs/5.0/assets/img/favicons/safari-pinned-tab.svg"
+      color="#7952b3"
+    />
+    <link rel="icon" href="/docs/5.0/assets/img/favicons/favicon.ico" />
+    <meta name="theme-color" content="#7952b3" />
+
+    <style>
+      pre {
+        white-space: pre-wrap; /* Since CSS 2.1 */
+        white-space: -moz-pre-wrap; /* Mozilla, since 1999 */
+        white-space: -pre-wrap; /* Opera 4-6 */
+        white-space: -o-pre-wrap; /* Opera 7 */
+        word-wrap: break-word; /* Internet Explorer 5.5+ */
+      }
+
+      .predicted {
+        border: 2px #25b525 solid;
+      }
+
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <div class="container py-4">
+        <div class="">
+          <div class="container-fluid">
+            <h1 class="">Movies Recommendation Engine - Demo</h1>
+            <p class="col-md-12">
+              This is an implementation of a recommendation engine that uses
+              item-based collaborative filtering to predict how a user might
+              like the movies that have not yet seen.
+            </p>
+          </div>
+        </div>
+
+        <div class="">
+          <h4 class="col-md-12 mb-4">
+            Rate 3 movie titles below and we will predict the 4th for you:
+          </h4>
+        </div>
+
+        <div class="row row-cols-1 row-cols-md-4 g-4">
+          <div class="col">
+            <div class="card" id="titanic-container">
+              <img
+                src="https://m.media-amazon.com/images/M/MV5BMDdmZGU3NDQtY2E5My00ZTliLWIzOTUtMTY4ZGI1YjdiNjk3XkEyXkFqcGdeQXVyNTA4NzY1MzY@._V1_.jpg"
+                class="card-img-top"
+                style="
+                  max-height: 300px;
+                  width: auto;
+                  object-fit: cover;
+                  object-position: top;
+                "
+                alt="..."
+              />
+              <div class="card-body">
+                <h5 class="card-title">Titanic</h5>
+                <select
+                  class="form-select"
+                  id="titanic"
+                  aria-label="Default select example"
+                >
+                  <option value="0" selected>Rate this title</option>
+                  <option value="1">1 star</option>
+                  <option value="2">2 star</option>
+                  <option value="3">3 star</option>
+                  <option value="4">4 star</option>
+                  <option value="5">5 star</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card" id="the-karate-kid-container">
+              <img
+                src="https://flxt.tmsimg.com/assets/p6526_p_v10_aa.jpg"
+                class="card-img-top"
+                style="
+                  max-height: 300px;
+                  width: auto;
+                  object-fit: cover;
+                  object-position: bottom;
+                "
+                alt="..."
+              />
+              <div class="card-body">
+                <h5 class="card-title">The Karate Kid</h5>
+                <select
+                  class="form-select"
+                  id="the-karate-kid"
+                  aria-label="Default select example"
+                >
+                  <option value="0" selected>Rate this title</option>
+                  <option value="1">1 star</option>
+                  <option value="2">2 star</option>
+                  <option value="3">3 star</option>
+                  <option value="4">4 star</option>
+                  <option value="5">5 star</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card" id="pulp-fiction-container">
+              <img
+                src="https://m.media-amazon.com/images/M/MV5BNGNhMDIzZTUtNTBlZi00MTRlLWFjM2ItYzViMjE3YzI5MjljXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_.jpg"
+                class="card-img-top"
+                style="
+                  max-height: 300px;
+                  width: auto;
+                  object-fit: cover;
+                  object-position: top;
+                "
+                alt="..."
+              />
+              <div class="card-body">
+                <h5 class="card-title">Pulp Fiction</h5>
+                <select
+                  class="form-select"
+                  id="pulp-fiction"
+                  aria-label="Default select example"
+                >
+                  <option value="0" selected>Rate this title</option>
+                  <option value="1">1 star</option>
+                  <option value="2">2 star</option>
+                  <option value="3">3 star</option>
+                  <option value="4">4 star</option>
+                  <option value="5">5 star</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card" id="back-to-the-future-container">
+              <img
+                src="https://upload.wikimedia.org/wikipedia/en/c/c2/Back_to_the_Future_Part_II.jpg"
+                class="card-img-top"
+                style="
+                  max-height: 300px;
+                  width: auto;
+                  object-fit: cover;
+                  object-position: top;
+                "
+                alt="..."
+              />
+              <div class="card-body">
+                <h5 class="card-title">Back to the Future</h5>
+                <select
+                  class="form-select"
+                  id="back-to-the-future"
+                  aria-label="Default select example"
+                >
+                  <option value="0" selected>Rate this title</option>
+                  <option value="1">1 star</option>
+                  <option value="2">2 star</option>
+                  <option value="3">3 star</option>
+                  <option value="4">4 star</option>
+                  <option value="5">5 star</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="d-grid gap-2 col-6 mx-auto">
+            <p id="error" class="text-center text-danger"></p>
+            <button class="btn btn-primary" id="predict-btn" type="button">
+              Predict
+            </button>
+          </div>
+        </div>
+        <p>Request:</p>
+        <pre id="request"></pre>
+
+        <p>Response:</p>
+        <pre id="response"></pre>
+      </div>
+    </main>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+      integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+
+    <script>
+      $("#predict-btn").click(function () {
+        const keyMaps = {
+          Titanic: "titanic",
+          "Pulp Fiction": "pulp-fiction",
+          "Back to the Future": "back-to-the-future",
+          "The Karate Kid": "the-karate-kid",
+        };
+        const titanicVal = $("select#titanic").val();
+        const pulpFictionVal = $("select#pulp-fiction").val();
+        const backToTheFutureVal = $("select#back-to-the-future").val();
+        const theKarateKidVal = $("select#the-karate-kid").val();
+
+        const allMovieRatings = [
+          { item: "Titanic", rating: titanicVal },
+          { item: "Pulp Fiction", rating: pulpFictionVal },
+          { item: "Back to the Future", rating: backToTheFutureVal },
+          { item: "The Karate Kid", rating: theKarateKidVal },
+        ];
+
+        const rated_movies = allMovieRatings.filter((e) => e.rating > 0);
+        const items_to_predict = allMovieRatings
+          .filter((e) => e.rating <= 0)
+          .map((e) => e.item);
+
+        if (rated_movies.length !== 3) {
+          $("#error").text("Please rate exactly 3 movie titles");
+          return;
+        } else {
+          $("#error").text("");
+        }
+
+        const items = rated_movies.map((e) => e.item);
+        const ratings = rated_movies.map((e) => e.rating);
+
+        const user = "Sample user";
+        const users = [user, user, user];
+
+        const requestText = {
+          users,
+          items,
+          ratings,
+          items_to_predict,
+        };
+        $("#request").text(
+          "POST /query \n\n" + JSON.stringify(requestText, null, 2)
+        );
+
+        $.ajax({
+          method: "POST",
+          url: "http://10.0.0.249:105/query/",
+          data: { users, items, ratings, items_to_predict },
+          success: function (data) {
+            $("#" + keyMaps[data[0][1]]).val(Math.round(data[0][3]).toString());
+            $("#" + keyMaps[data[0][1]] + "-container").addClass("predicted");
+
+            $("#response").text(JSON.stringify(data[0], null, 2));
+          },
+          error: function (data) {
+            console.log(data);
+          },
+        });
+      });
+    </script>
+  </body>
+</html>
